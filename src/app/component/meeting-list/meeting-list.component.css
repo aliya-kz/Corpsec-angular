@@ -1,0 +1,66 @@
+.meeting-container {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.meeting-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.meeting-table th,
+.meeting-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.meeting-table th {
+  background-color: #f0f0f0;
+}
+
+.view-button {
+  background-color: rgb(185, 150, 110);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.meeting-form {
+  margin-top: 20px;
+}
+
+.meeting-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.meeting-form input,
+.meeting-form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.meeting-form button {
+  background-color: rgb(185, 150, 110);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.meeting-form button:hover {
+  background-color: rgb(155, 120, 80);
+}

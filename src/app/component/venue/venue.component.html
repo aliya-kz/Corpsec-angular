@@ -1,0 +1,14 @@
+<div class="venue-container">
+  <h3>Venue List</h3>
+  <ul>
+    <li *ngFor="let venue of venues">{{ venue.name }}</li>
+  </ul>
+  <h3>Create New Venue</h3>
+  <form (ngSubmit)="createVenue()">
+    <label for="nameEn">Name (English):</label>
+    <input type="text" id="nameEn" name="nameEn" [(ngModel)]="newVenue.nameEn" required>
+    <label for="nameRu">Name (Russian):</label>
+    <input type="text" id="nameRu" name="nameRu" [(ngModel)]="newVenue.nameRu" required>
+    <button type="submit">Create Venue</button>
+  </form>
+</div>

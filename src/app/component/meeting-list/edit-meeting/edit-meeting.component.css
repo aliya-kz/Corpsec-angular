@@ -1,0 +1,56 @@
+.edit-meeting-container {
+  font-family: Arial, sans-serif;
+  color: rgb(50, 56, 74);
+}
+
+.edit-meeting-container h3 {
+  color: rgb(50, 56, 74);
+  font-size: 1.2em;
+}
+
+.edit-meeting-container label {
+  display: block;
+  margin-top: 10px;
+}
+
+.edit-meeting-container input[type="text"],
+.edit-meeting-container input[type="datetime-local"] {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.edit-meeting-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.edit-meeting-container th,
+.edit-meeting-container td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.edit-meeting-container th {
+  background-color: #f2f2f2;
+}
+
+.edit-meeting-container .wide-input {
+  width: 100%;
+}
+
+.edit-meeting-container .save-button {
+  background-color: rgb(185, 150, 110);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.edit-meeting-container .save-button:hover {
+  background-color: rgb(165, 130, 90);
+}

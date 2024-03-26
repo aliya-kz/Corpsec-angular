@@ -1,0 +1,43 @@
+.venue-container {
+  font-family: Arial, sans-serif;
+  color: rgb(50, 56, 74);
+}
+
+.venue-container h3 {
+  color: rgb(50, 56, 74);
+  font-size: 1.2em;
+}
+
+.venue-container label {
+  display: block;
+  margin-top: 10px;
+}
+
+.venue-container input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.venue-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.venue-container ul li {
+  margin-top: 5px;
+}
+
+.venue-container button[type="submit"] {
+  background-color: rgb(185, 150, 110);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.venue-container button[type="submit"]:hover {
+  background-color: rgb(165, 130, 90);
+}

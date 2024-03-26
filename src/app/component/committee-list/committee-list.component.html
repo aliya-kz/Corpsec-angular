@@ -1,0 +1,34 @@
+<div class="container">
+  <button *ngIf="showHistoryButton" class="history-button" (click)="goToCommitteesHistory()">History</button>
+  <button *ngIf="!showHistoryButton" class="back-button" (click)="hideHistory()">Back to Active Committees</button>
+
+  <h2 class="heading">List of Committees</h2>
+  <ul class="committee-list">
+    <li *ngFor="let committee of committees" class="committee-item">
+      {{ committee.fullName }}
+      <button class="edit-button" (click)="editCommittee(committee.id)">Edit</button>
+      <ul class="member-list">
+        <li *ngFor="let member of filterCommitteeMembers(committee)" class="member-item">
+          {{ member.memberName }} <span *ngIf="member.chair ==='true'" class="chair">(Chair)</span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2 class="heading">Add new committee</h2>
+  <form class="form" (ngSubmit)="createCommittee()">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" [(ngModel)]="newCommittee.fullName" required>
+
+    <label for="shortName">Short Name:</label>
+    <input type="text" id="shortName" name="shortName" [(ngModel)]="newCommittee.shortName" required>
+
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" [(ngModel)]="newCommittee.startDate" required>
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" [(ngModel)]="newCommittee.endDate" required>
+
+    <button type="submit" class="submit-button">Create Committee</button>
+  </form>
+</div>

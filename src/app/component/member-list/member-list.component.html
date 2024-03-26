@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="header">
+    <h2>List of Members</h2>
+
+    <div class="button-container">
+      <!-- Show History button if members are not all active -->
+      <button *ngIf="!showingHistory" class="button-primary" (click)="showHistory()">View members
+        history
+      </button>
+
+      <!-- Show Back to Active Members button if history is being displayed -->
+      <button *ngIf="showingHistory" class="button-primary" (click)="backToActiveMembers()">Back to
+        Active Members
+      </button>
+    </div>
+  </div>
+
+  <div class="member-list">
+    <h2>Member List</h2>
+
+    <div class="filters">
+      <label>Start Date:</label>
+      <input type="date" [(ngModel)]="startDateFilter">
+
+      <!-- Filter by end date -->
+      <label>End Date:</label>
+      <input type="date" [(ngModel)]="endDateFilter">
+
+      <!-- Filter by INED status -->
+      <label>INED:</label>
+      <select [(ngModel)]="INEDFilter">
+        <option value="">All</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+
+      <div class="filter-buttons">
+        <button *ngIf="!filtersApplied" class="button-primary" (click)="applyFilters()">Apply
+          Filters
+        </button>
+        <button *ngIf="filtersApplied" class="button-secondary" (click)="resetFilters()">Reset
+          Filters
+        </button>
+      </div>
+
+      <div class="sort-by">
+        <h3>Sort by</h3>
+        <select [(ngModel)]="selectedSortCriteria" (change)="sortMembers(selectedSortCriteria)">
+          <option [value]="SortCriteria.FullName">Full Name</option>
+          <option [value]="SortCriteria.StartDate">Start Date</option>
+          <option [value]="SortCriteria.EndDate">End Date</option>
+        </select>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Short Name</th>
+        <th>Full Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>INED</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let member of members" (click)="viewMemberDetails(member.id)">
+        <td>{{ member.shortName }}</td>
+        <td>{{ member.fullName }}</td>
+        <td>{{ member.startDate }}</td>
+        <td>{{ member.endDate }}</td>
+        <td>{{ member.ined ? 'Yes' : 'No' }}</td>
+        <td><a [routerLink]="['/members', member.id]" class="edit-link">Edit</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="add-member">
+    <h2>Add new Board member:</h2>
+
+    <form class="form" (ngSubmit)="createMember()">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" [(ngModel)]="newMember.fullName" required>
+
+      <label for="shortName">Short Name:</label>
+      <input type="text" id="shortName" name="shortName" [(ngModel)]="newMember.shortName" required>
+
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate" [(ngModel)]="newMember.startDate" required>
+
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" name="endDate" [(ngModel)]="newMember.endDate" required>
+
+      <label for="ined">INED:</label>
+      <select id="ined" name="ined" [(ngModel)]="newMember.ined">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+
+      <button type="submit" class="button-primary">Add Member</button>
+    </form>
+
+    <p class="status-message">{{ memberCreationStatusMessage }}</p>
+  </div>
+</div>

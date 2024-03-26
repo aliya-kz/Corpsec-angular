@@ -1,0 +1,11 @@
+{
+  "member": {
+    "title": "Детали участника",
+    "fullName": "Полное имя",
+    "shortName": "Краткое имя",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+    "ined": "INED",
+    "updateButton": "Обновить"
+  }
+}

@@ -1,0 +1,76 @@
+.committee-container {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.committee-container h2 {
+  margin-bottom: 20px;
+}
+
+.committee-container p {
+  margin-bottom: 10px;
+}
+
+.committee-container input[type="text"],
+.committee-container input[type="date"],
+.committee-container select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+
+.committee-container button {
+  background-color: #ffd700;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.committee-container button:hover {
+  background-color: #e6b800;
+}
+
+.committee-container .member-info {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.committee-container .member-info select {
+  width: calc(100% - 22px);
+  margin-bottom: 5px;
+}
+
+.committee-container .add-member-form p {
+  margin-bottom: 5px;
+}
+
+.committee-container .add-member-form input[type="number"] {
+  width: calc(100% - 22px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+
+.committee-container .add-member-form button {
+  background-color: #ffd700;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.committee-container .add-member-form button:hover {
+  background-color: #e6b800;
+}
+

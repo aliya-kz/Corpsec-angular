@@ -1,0 +1,46 @@
+.container {
+  padding: 20px;
+}
+
+.history-button,
+.back-button,
+.edit-button,
+.submit-button {
+  background-color: rgb(185, 150, 110);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.history-button:hover,
+.back-button:hover,
+.edit-button:hover,
+.submit-button:hover {
+  background-color: rgba(185, 150, 110, 0.8);
+}
+
+.heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.committee-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.committee-item {
+  margin-bottom: 20px;
+}
+
+.member-item {
+  margin-left: 20px;
+}
+
+.chair {
+  color: #0066cc;
+  font-weight: bold;
+}

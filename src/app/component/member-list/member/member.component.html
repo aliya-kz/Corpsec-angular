@@ -1,0 +1,11 @@
+<div class="member-container" *ngIf="member">
+  <h2>{{ 'member.title' | translate }}</h2>
+  <p>{{ 'member.fullName' | translate }}: <input type="text" [(ngModel)]="member.fullName"></p>
+  <p>{{ 'member.shortName' | translate }}: <input type="text" [(ngModel)]="member.shortName"></p>
+  <p>{{ 'member.startDate' | translate }}: <input type="text" [(ngModel)]="member.startDate"></p>
+  <p>{{ 'member.endDate' | translate }}: <input type="text" [(ngModel)]="member.endDate"></p>
+  <p>{{ 'member.ined' | translate }}: <input type="checkbox" [(ngModel)]="member.ined"></p>
+  <button (click)="updateMember()">{{ 'memberDetails.updateButton' | translate }}</button>
+
+  <div *ngIf="updateStatusMessage" class="update-status">{{ updateStatusMessage }}</div>
+</div>

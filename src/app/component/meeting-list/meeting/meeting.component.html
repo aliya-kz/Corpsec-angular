@@ -1,0 +1,38 @@
+<div class="meeting-details-container">
+  <h3>Meeting Details</h3>
+  <p>Committee Name: {{ getCommitteeName(meeting.committeeId) }}</p>
+  <p>Meeting Number: {{ meeting.meetingNumber }}</p>
+  <p>Venue: {{getVenue(meeting.venueId)}}</p>
+  <p>Start Date Time: {{ meeting?.startDateTime }}</p>
+  <p>End Date Time: {{ meeting?.endDateTime }}</p>
+
+  <h3>Agenda Items</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Number</th>
+      <th>Name</th>
+      <th>Decision</th>
+      <th>Committee Members' Votings</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let agendaItem of meeting.agendaItemList">
+      <td>{{ agendaItem.number }}</td>
+      <td>{{ agendaItem.name }}</td>
+      <td>{{ agendaItem.decision }}</td>
+      <td> <!-- New column -->
+        <ul>
+          <li *ngFor="let voting of agendaItem.votingSet">
+            {{ getMemberName(voting.memberId) }} - {{ getVoteName(voting.voteId) }}
+          </li>
+        </ul>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
+  <button class="edit-button" (click)="editMeeting()">Edit Meeting</button>
+
+</div>

@@ -1,0 +1,11 @@
+{
+  "member": {
+    "title": "Member Details",
+    "fullName": "Full Name",
+    "shortName": "Short Name",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "ined": "INED",
+    "updateButton": "Update"
+  }
+}

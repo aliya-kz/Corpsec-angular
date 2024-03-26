@@ -1,0 +1,83 @@
+<div class="meeting-container">
+  <app-scraper></app-scraper>
+
+  <h3>Meeting List</h3>
+  <label for="committeeFilter">Committee:</label>
+  <select id="committeeFilter" name="committeeFilter" [(ngModel)]="committeeFilter">
+    <option value="">All</option>
+    <option *ngFor="let committee of committees" [value]="committee.id">{{ committee.shortName }}</option>
+  </select>
+
+  <!-- Filter by start date -->
+  <label for="startDateFilter">Start Date:</label>
+  <input type="date" id="startDateFilter" name="startDateFilter" [(ngModel)]="startDateFilter">
+
+  <!-- Filter by end date -->
+  <label for="endDateFilter">End Date:</label>
+  <input type="date" id="endDateFilter" name="endDateFilter" [(ngModel)]="endDateFilter">
+
+  <!-- Apply filters button -->
+  <button *ngIf="!filtersApplied"(click)="applyFilters()">Apply Filters</button>
+
+  <!-- Reset filters button -->
+  <button *ngIf="filtersApplied" (click)="resetFilters()">Reset Filters</button>
+  <br>
+  <div class="sort-by">
+  <h3>Sort by</h3>
+   <select [(ngModel)]="selectedSortCriteria" (change)="sortMeetings(selectedSortCriteria)">
+      <option [value]="SortCriteria.CommitteeId">Committee name</option>
+      <option [value]="SortCriteria.StartDate">Date</option>
+      <option [value]="SortCriteria.MeetingNumber">Meeting number</option>
+    </select>
+
+  </div>
+
+
+  <br>
+  <table class="meeting-table">
+    <thead>
+    <tr>
+      <th>Committee Name</th>
+      <th>Meeting Number</th>
+      <th>Start Date Time</th>
+      <th>End Date Time</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let meeting of meetings">
+      <td>{{ getCommitteeName(meeting.committeeId) }}</td>
+      <td>{{ meeting.meetingNumber }}</td>
+      <td>{{ meeting.startDateTime }}</td>
+      <td>{{ meeting.endDateTime }}</td>
+      <td>
+        <button class="view-button" (click)="viewMeeting(meeting.id)">View</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h3>Create Meeting</h3>
+  <form class="meeting-form" (submit)="createMeeting()">
+    <label for="committeeId">Committee:</label>
+    <select id="committeeId" name="committeeId" [(ngModel)]="meetingRequest.committeeId" required>
+      <option *ngFor="let committee of committees" [value]="committee.id">{{ committee.shortName }}</option>
+    </select>
+
+    <label for="venueId">Venue:</label>
+    <select id="venueId" name="venueId" [(ngModel)]="meetingRequest.venueId" required>
+      <option *ngFor="let venue of venues" [value]="venue.id">{{ venue.name }}</option>
+    </select>
+
+    <label for="meetingNumber">Meeting number:</label>
+    <input type="number" id="meetingNumber" name="meetingNumber" [(ngModel)]="meetingRequest.meetingNumber" required>
+
+    <label for="startDateTime">Start Date Time:</label>
+    <input type="datetime-local" id="startDateTime" name="startDateTime" [(ngModel)]="meetingRequest.startDateTime" required>
+
+    <label for="endDateTime">End Date Time:</label>
+    <input type="datetime-local" id="endDateTime" name="endDateTime" [(ngModel)]="meetingRequest.endDateTime" required>
+
+    <button type="submit" class="create-button">Create Meeting</button>
+  </form>
+</div>
