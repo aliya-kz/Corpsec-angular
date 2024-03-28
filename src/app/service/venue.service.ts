@@ -3,13 +3,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { VenueResponse, VenueRequest } from '../model/venue.model';
 import {LanguageService} from "./language.service";
+import {DEFAULT_LANGUAGE, LANGUAGE_HEADER, VENUES_URI} from "../app.constants";
 
 @Injectable({
   providedIn: 'root'
 })
 export class VenueService {
-  private apiUrl = 'http://localhost:8080/venues';
-  private language: string = 'en';
+  private apiUrl = VENUES_URI;
+  private language: string = DEFAULT_LANGUAGE;
 
   constructor(private http: HttpClient, private languageService: LanguageService) {
     this.languageService.languageChanged.subscribe((language: string) => {
@@ -19,7 +20,7 @@ export class VenueService {
 
   private getRequestOptions(): { headers: HttpHeaders } {
     return {
-      headers: new HttpHeaders().set('Accept-Language', this.language)
+      headers: new HttpHeaders().set(LANGUAGE_HEADER, this.language)
     };
   }
 
@@ -29,9 +30,5 @@ export class VenueService {
 
   createVenue(venue: VenueRequest): Observable<VenueResponse> {
     return this.http.post<VenueResponse>(`${this.apiUrl}/new`, venue, this.getRequestOptions());
-  }
-
-  getVenueById(id: string | null): Observable<VenueResponse> {
-      return this.http.get<VenueResponse>(`${this.apiUrl}/${id}`, this.getRequestOptions());
   }
 }

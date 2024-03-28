@@ -1,11 +1,129 @@
 {
   "member": {
-    "title": "Member Details",
-    "fullName": "Full Name",
-    "shortName": "Short Name",
-    "startDate": "Start Date",
-    "endDate": "End Date",
+    "title": "Member details",
+    "fullName": "Full name",
+    "shortName": "Short name",
+    "startDate": "Election date",
+    "endDate": "Termination date",
     "ined": "INED",
     "updateButton": "Update"
+  },
+  "member-list": {
+    "title": "List of Members",
+    "viewHistory": "Board members archive",
+    "backToActiveMembers": "Back to Active Members",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "addMemberTitle": "Add new Board member",
+    "addMember": "Add Member"
+  },
+  "general": {
+    "yes": "Yes",
+    "no": "No",
+    "all": "All",
+    "sortBy": "Sort By",
+    "applyFilters": "Apply",
+    "resetFilters": "Reset",
+    "view": "View",
+    "startDate": "Start Date",
+    "endDate": "End Date"
+  },
+  "committee": {
+    "listHeading": "List of Committees",
+    "addHeading": "Add new committee",
+    "fullName": "Full name",
+    "shortName": "Short name",
+    "startDate": "Creation date",
+    "endDate": "Abolishment date",
+    "editButton": "Edit",
+    "createButton": "Create Committee",
+    "historyButton": "Committees archive",
+    "backButton": "Back to active Committees"
+  },
+  "venue": {
+    "listHeading": "Venue List",
+    "createHeading": "Add New Venue",
+    "nameEnLabel": "Name (English)",
+    "nameRuLabel": "Name (Russian)",
+    "createButton": "Add"
+  },
+  "agenda": {
+    "committeeLabel": "Committee:",
+    "selectCommittee": "Select Committee",
+    "startDateLabel": "Search from date:",
+    "endDateLabel": "Search until date:",
+    "searchLabel": "Key word:",
+    "applyButton": "Apply",
+    "meetingNumberHeader": "Meeting number",
+    "meetingDateHeader": "Meeting date (MM/DD/YYYY)",
+    "agendaItemNumberHeader": "Agenda item number",
+    "agendaItemHeader": "Agenda item",
+    "decisionHeader": "Decision",
+    "downloadExcelButton": "Download Excel",
+    "meetingLinkHeader": "Meeting Link"
+  },
+  "meeting": {
+    "listHeading": "Search by criteria",
+    "committeeLabel": "Committee",
+    "committeeName": "Committee name",
+    "date": "Date",
+    "meetingNumber": "Meeting number",
+    "startDateTime": "Start Date and Time",
+    "endDateTime": "End Date and Time",
+    "createMeetingHeading": "Create Meeting",
+    "createMeetingButton": "Create",
+    "venue": "Venue"
+  },
+  "navbar": {
+    "members": "Board members",
+    "committees": "Board & Committees",
+    "meetings": "Meetings",
+    "venues": "Venues",
+    "search": "Search"
+  },
+  "scraping": {
+    "folderPath": "Folder Path to save minutes into the database:",
+    "scrapeButton": "Save",
+    "scrapingResult": "Result:"
+  },
+  "meetingDetails": {
+    "title": "Meeting Details",
+    "committeeName": "Committee name:",
+    "meetingNumber": "Meeting number:",
+    "venue": "Venue:",
+    "startDateTime": "Start Date & Time:",
+    "endDateTime": "End Date & Time:",
+    "agendaItems": "Agenda Items",
+    "number": "Item #",
+    "name": "Name",
+    "decision": "Decision",
+    "committeeMembersVotings": "Committee Members' Votings",
+    "editButton": "Edit Meeting"
+  },
+  "editMeeting": {
+    "title": "Edit Meeting",
+    "committeeLabel": "Committee:",
+    "venueLabel": "Venue:",
+    "meetingNumberLabel": "Meeting Number:",
+    "startDateTimeLabel": "Start Date & Time:",
+    "endDateTimeLabel": "End Date & Time:",
+    "agendaItems": "Agenda Items",
+    "number": "Number",
+    "name": "Name",
+    "decision": "Decision",
+    "votes": "Votes",
+    "delete": "Delete",
+    "addAgendaItem": "Add Agenda Item",
+    "saveChanges": "Save Changes"
+  },
+  "scraping": {
+    "folderPathLabel": "Folder Path to transfer data from the minutes:",
+    "scrapeMinutesButton": "Save",
+    "scrapingResultHeading": "Result:"
   }
 }
+
+
+
+
+

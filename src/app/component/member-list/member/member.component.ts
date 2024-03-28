@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {MemberService} from "../../../service/member.service";
 import {MemberResponse} from "../../../model/member.model";
+import {STATUS_MESSAGES} from "../../../app.constants";
 
 @Component({
   selector: 'app-member',
@@ -15,8 +16,7 @@ export class MemberComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private memberService: MemberService,
-    private router: Router
+    private memberService: MemberService
   ) {
   }
 
@@ -27,7 +27,7 @@ export class MemberComponent {
         this.memberId = id;
         this.getMemberDetails(this.memberId);
       } else {
-        // Handle the case where 'id' is null
+        console.log("Id is null");
       }
     });
   }
@@ -51,10 +51,10 @@ export class MemberComponent {
 
       this.memberService.updateMember(memberRequest.id, memberRequest).subscribe(
         updatedMember => {
-          this.updateStatusMessage = 'Member updated successfully';
+          this.updateStatusMessage = STATUS_MESSAGES.memberUpdatedSuccess;
         },
         error => {
-          this.updateStatusMessage = 'Error updating member: ' + error.message;
+          this.updateStatusMessage = STATUS_MESSAGES.memberUpdatedError + error.message;
         });
     }
   }

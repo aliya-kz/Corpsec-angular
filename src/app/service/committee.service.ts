@@ -4,12 +4,13 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {CommitteeRequest, CommitteeResponse} from "../model/committee.model";
 import {CommitteeMemberRequest} from "../model/committee-member.model";
 import {LanguageService} from "./language.service";
+import {COMMITTEES_URI, LANGUAGE_HEADER} from "../app.constants";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommitteeService {
-  private apiUrl = 'http://localhost:8080/committees';
+  private apiUrl = COMMITTEES_URI;
   private language: string = '';
 
   constructor(private http: HttpClient, private languageService: LanguageService) {
@@ -20,7 +21,7 @@ export class CommitteeService {
 
   private getRequestOptions(): { headers: HttpHeaders } {
     return {
-      headers: new HttpHeaders().set('Accept-Language', this.language)
+      headers: new HttpHeaders().set(LANGUAGE_HEADER, this.language)
     };
   }
 

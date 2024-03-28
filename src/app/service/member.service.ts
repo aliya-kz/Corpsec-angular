@@ -3,14 +3,15 @@ import {Observable} from 'rxjs';
 import {MemberResponse} from '../model/member.model';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LanguageService} from "./language.service";
+import {DEFAULT_LANGUAGE, LANGUAGE_HEADER, MEMBERS_URI} from "../app.constants";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberService {
-  private apiUrl = 'http://localhost:8080/members';
-  private language: string = 'en';
+  private apiUrl = MEMBERS_URI;
+  private language: string = DEFAULT_LANGUAGE;
 
   constructor(private http: HttpClient, private languageService: LanguageService) {
     this.languageService.languageChanged.subscribe((language: string) => {
@@ -20,7 +21,7 @@ export class MemberService {
 
   private getRequestOptions(): { headers: HttpHeaders } {
     return {
-      headers: new HttpHeaders().set('Accept-Language', this.language)
+      headers: new HttpHeaders().set(LANGUAGE_HEADER, this.language)
     };
   }
 

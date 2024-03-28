@@ -12,8 +12,7 @@
   margin-bottom: 10px;
 }
 
-.member-container input[type="text"],
-.member-container input[type="checkbox"] {
+.member-container input[type="text"] {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
@@ -21,8 +20,14 @@
   border-radius: 5px;
 }
 
+.member-container input[type="checkbox"] {
+  margin-bottom: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+
 .member-container button {
-  background-color: #ffd700;
+  background-color: rgb(185, 150, 110);;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -31,7 +36,7 @@
 }
 
 .member-container button:hover {
-  background-color: #e6b800;
+  background-color: rgb(170, 130, 90);;
 }
 
 .update-status {

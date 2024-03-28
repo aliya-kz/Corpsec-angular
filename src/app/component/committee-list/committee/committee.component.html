@@ -1,55 +1,64 @@
-<button (click)="toggleShowAllMembers()">
-  {{ showOldMembers ? 'Show Active Members Only' : 'Show History of Committee Members' }}
-</button>
+<div class="main">
 
-<div class="committee-container" *ngIf="committee">
-  <h2>{{ committee.fullName }}</h2>
-  <p>Short Name: <input [(ngModel)]="committee.shortName"></p>
-  <p>Full Name: <input [(ngModel)]="committee.fullName"></p>
-  <p>Start Date: <input type="date" [(ngModel)]="committee.startDate"></p>
-  <p>End Date: <input type="date" [(ngModel)]="committee.endDate"></p>
+  <button (click)="toggleShowAllMembers()">
+    {{ showOldMembers ? 'Show Active Members Only' : 'Show History of Committee Members' }}
+  </button>
 
-  <h3>Committee Members</h3>
-  <table>
-    <thead>
-    <tr>
-      <th>Member Name</th>
-      <th>Chair</th>
-      <th>Start Date</th>
-      <th>End Date</th>
-      <th>Minutes # where the committee member was elected</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let member of filteredCommitteeMembers">
-      <td>{{ member.memberName }}</td>
-      <td>
-        <select [(ngModel)]="member.chair">
-          <option value="true">Chair</option>
-          <option value="false">Not a Chair</option>
-        </select>
-      </td>
-      <td><input type="date" [(ngModel)]="member.startDate"></td>
-      <td><input type="date" [(ngModel)]="member.endDate"></td>
-      <td><input type="number" [(ngModel)]="member.gsmElectionMinutesNumber"></td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="committee-container" *ngIf="committee">
+    <h2>{{ committee.shortName }}</h2>
+    <p>Short Name: <input type="text" [(ngModel)]="committee.shortName"></p>
+    <p>Full Name: <input type="text" [(ngModel)]="committee.fullName"></p>
+    <p>Start Date: <input type="date" [(ngModel)]="committee.startDate"></p>
+    <p>End Date: <input type="date" [(ngModel)]="committee.endDate"></p>
 
-  <button (click)="updateCommittee()">Save Changes</button>
+    <h3>Committee Members</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Member Name</th>
+        <th>Chair</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Minutes # where the committee member was elected</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let member of filteredCommitteeMembers">
+        <td>{{ member.memberName }}</td>
+        <td>
+          <select [(ngModel)]="member.chair">
+            <option value="true">Chair</option>
+            <option value="false">Not a Chair</option>
+          </select>
+        </td>
+        <td><input type="date" [(ngModel)]="member.startDate"></td>
+        <td><input type="date" [(ngModel)]="member.endDate"></td>
+        <td><input type="number" [(ngModel)]="member.gsmElectionMinutesNumber"></td>
+      </tr>
+      </tbody>
+    </table>
 
-  <h3>Add Committee Member</h3>
-  <div class="add-member-form">
-    <select [(ngModel)]="selectedMember.memberId">
-      <option *ngFor="let member of activeMembers" [value]="member.id">{{ member.fullName }}</option>
-    </select>
-    <select id="chair" name="chair" [(ngModel)]="selectedMember.chair">
-      <option value="true">Chair</option>
-      <option value="false">Not a Chair</option>
-    </select>
-    <p>Start Date: <input type="date" [(ngModel)]="selectedMember.startDate"></p>
-    <p>End Date: <input type="date" [(ngModel)]="selectedMember.endDate"></p>
-    <p>GSM Election Minutes #: <input type="number" [(ngModel)]="selectedMember.gsmElectionMinutesNumber"></p>
-    <button (click)="addCommitteeMember()">Add Member</button>
+    <button (click)="updateCommittee()">Save Changes</button>
+    <p>{{memberUpdatingStatus}}</p>
+    <div class="add-member">
+      <h3>Add Committee Member</h3><br>
+
+      <select [(ngModel)]="selectedMember.memberId">
+        <option *ngFor="let member of activeMembers"
+                [value]="member.id">{{ member.fullName }}</option>
+      </select>
+      <select id="chair" name="chair" [(ngModel)]="selectedMember.chair">
+        <option value="true">Chair</option>
+        <option value="false">Not a Chair</option>
+      </select>
+
+      <p>Start Date: <input type="date" [(ngModel)]="selectedMember.startDate"></p><br>
+      <p>End Date: <input type="date" [(ngModel)]="selectedMember.endDate"></p><br>
+      <p>GSM Election Minutes #: <input type="number"
+                                        [(ngModel)]="selectedMember.gsmElectionMinutesNumber"></p>
+      <br>
+      <button (click)="addCommitteeMember()">Add Member</button>
+      <p> {{memberAddingStatus}}</p>
+    </div>
   </div>
 </div>

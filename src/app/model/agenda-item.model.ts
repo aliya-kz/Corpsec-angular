@@ -1,4 +1,4 @@
-import {Voting} from "../../../model/voting.model";
+import {Voting} from "./voting.model";
 
 export class AgendaItemResponse {
   id: string = "";

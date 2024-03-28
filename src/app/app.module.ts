@@ -7,7 +7,7 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommitteeComponent} from "./component/committee-list/committee/committee.component";
-import {HeaderComponent} from "./component/header/header.component";
+import {LeftMenuComponent} from "./component/left-menu/left-menu.component";
 import {CommitteeListComponent} from "./component/committee-list/committee-list.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
@@ -15,12 +15,13 @@ import {VenueComponent} from "./component/venue/venue.component";
 import {EditMeetingComponent} from "./component/meeting-list/edit-meeting/edit-meeting.component";
 import {MeetingListComponent} from "./component/meeting-list/meeting-list.component";
 import {VoteComponent} from "./component/vote/vote.component";
-import {AgendaItemComponent} from "./component/meeting-list/agenda-item/agenda-item.component";
+import {AgendaItemComponent} from "./component/agenda-item/agenda-item.component";
 import {MeetingComponent} from "./component/meeting-list/meeting/meeting.component";
 import {LanguageComponent} from "./component/language/language.component";
 import {ScraperComponent} from "./component/scraper/scraper.component";
 import {TranslateLoader, TranslateModule, TranslateService} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {SettingsComponent} from "./component/settings/settings.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,11 +37,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     MeetingComponent,
     MeetingListComponent,
     EditMeetingComponent,
-    HeaderComponent,
+    LeftMenuComponent,
     VoteComponent,
     AgendaItemComponent,
     LanguageComponent,
-    ScraperComponent],
+    ScraperComponent,
+    SettingsComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -65,8 +67,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   exports: [
     MemberListComponent,
     CommitteeComponent,
-    HeaderComponent,
-    LanguageComponent
+    LeftMenuComponent,
+    LanguageComponent,
+    SettingsComponent
   ],
   bootstrap: [AppComponent]
 })

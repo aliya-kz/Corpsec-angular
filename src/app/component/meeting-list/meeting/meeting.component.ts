@@ -58,7 +58,6 @@ export class MeetingComponent {
         console.error('Error fetching meeting details:', error);
       }
     );
-
   }
 
   editMeeting() {

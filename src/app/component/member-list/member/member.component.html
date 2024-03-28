@@ -5,7 +5,7 @@
   <p>{{ 'member.startDate' | translate }}: <input type="text" [(ngModel)]="member.startDate"></p>
   <p>{{ 'member.endDate' | translate }}: <input type="text" [(ngModel)]="member.endDate"></p>
   <p>{{ 'member.ined' | translate }}: <input type="checkbox" [(ngModel)]="member.ined"></p>
-  <button (click)="updateMember()">{{ 'memberDetails.updateButton' | translate }}</button>
+  <button (click)="updateMember()">{{ 'member.updateButton' | translate }}</button>
 
   <div *ngIf="updateStatusMessage" class="update-status">{{ updateStatusMessage }}</div>
 </div>

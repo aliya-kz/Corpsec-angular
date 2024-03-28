@@ -1,18 +1,17 @@
-nav ul {
-  list-style-type: none;
-  padding: 0;
+.header-container {
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent
 }
 
-nav ul li {
-  display: inline;
-  margin-right: 10px;
+.logo img {
+  height: 30px;
 }
 
-nav ul li a {
-  text-decoration: none;
-  color: black;
+.language {
+  right: 30px;
+  position: fixed;
 }
 
-nav ul li a.active {
-  font-weight: bold;
-}

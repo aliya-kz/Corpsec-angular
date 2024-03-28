@@ -1,19 +1,20 @@
 <div class="meeting-details-container">
-  <h3>Meeting Details</h3>
-  <p>Committee Name: {{ getCommitteeName(meeting.committeeId) }}</p>
-  <p>Meeting Number: {{ meeting.meetingNumber }}</p>
-  <p>Venue: {{getVenue(meeting.venueId)}}</p>
-  <p>Start Date Time: {{ meeting?.startDateTime }}</p>
-  <p>End Date Time: {{ meeting?.endDateTime }}</p>
+  <h3>{{ 'meetingDetails.title' | translate }}</h3>
+  <p>{{ 'meetingDetails.committeeName' | translate }} {{ getCommitteeName(meeting.committeeId) }}</p>
+  <p>{{ 'meetingDetails.meetingNumber' | translate }} {{ meeting.meetingNumber }}</p>
+  <p>{{ 'meetingDetails.venue' | translate }} {{ getVenue(meeting.venueId) }}</p>
+  <p>{{ 'meetingDetails.startDateTime' | translate }} {{ meeting?.startDateTime }}</p>
+  <p>{{ 'meetingDetails.endDateTime' | translate }} {{ meeting?.endDateTime }}</p>
 
-  <h3>Agenda Items</h3>
+  <button class="first-edit-button" (click)="editMeeting()">{{ 'meetingDetails.editButton' | translate }}</button>
+  <h3 class="agenda-items-title">{{ 'meetingDetails.agendaItems' | translate }}</h3>
   <table>
     <thead>
     <tr>
-      <th>Number</th>
-      <th>Name</th>
-      <th>Decision</th>
-      <th>Committee Members' Votings</th>
+      <th>{{ 'meetingDetails.number' | translate }}</th>
+      <th>{{ 'meetingDetails.name' | translate }}</th>
+      <th>{{ 'meetingDetails.decision' | translate }}</th>
+      <th>{{ 'meetingDetails.committeeMembersVotings' | translate }}</th>
     </tr>
     </thead>
     <tbody>
@@ -29,10 +30,8 @@
         </ul>
       </td>
     </tr>
-
     </tbody>
   </table>
 
-  <button class="edit-button" (click)="editMeeting()">Edit Meeting</button>
-
+  <button class="edit-button" (click)="editMeeting()">{{ 'meetingDetails.editButton' | translate }}</button>
 </div>

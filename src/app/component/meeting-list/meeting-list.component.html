@@ -1,83 +1,91 @@
 <div class="meeting-container">
   <app-scraper></app-scraper>
 
-  <h3>Meeting List</h3>
-  <label for="committeeFilter">Committee:</label>
+  <h2>{{ 'meeting.listHeading' | translate }}</h2>
+  <label for="committeeFilter">{{ 'meeting.committeeLabel' | translate }}</label>
   <select id="committeeFilter" name="committeeFilter" [(ngModel)]="committeeFilter">
-    <option value="">All</option>
-    <option *ngFor="let committee of committees" [value]="committee.id">{{ committee.shortName }}</option>
+    <option value="">{{ 'general.all' | translate }}</option>
+    <option *ngFor="let committee of committees"
+            [value]="committee.id">{{ committee.shortName }}</option>
   </select>
 
-  <!-- Filter by start date -->
-  <label for="startDateFilter">Start Date:</label>
+  <label for="startDateFilter">{{ 'general.startDate' | translate }}</label>
   <input type="date" id="startDateFilter" name="startDateFilter" [(ngModel)]="startDateFilter">
 
-  <!-- Filter by end date -->
-  <label for="endDateFilter">End Date:</label>
+  <label for="endDateFilter">{{ 'general.endDate' | translate }}</label>
   <input type="date" id="endDateFilter" name="endDateFilter" [(ngModel)]="endDateFilter">
 
-  <!-- Apply filters button -->
-  <button *ngIf="!filtersApplied"(click)="applyFilters()">Apply Filters</button>
+  <button *ngIf="!filtersApplied"
+          (click)="applyFilters()">{{ 'general.applyFilters' | translate }}</button>
 
-  <!-- Reset filters button -->
-  <button *ngIf="filtersApplied" (click)="resetFilters()">Reset Filters</button>
+  <button *ngIf="filtersApplied"
+          (click)="resetFilters()">{{ 'general.resetFilters' | translate }}</button>
   <br>
   <div class="sort-by">
-  <h3>Sort by</h3>
-   <select [(ngModel)]="selectedSortCriteria" (change)="sortMeetings(selectedSortCriteria)">
-      <option [value]="SortCriteria.CommitteeId">Committee name</option>
-      <option [value]="SortCriteria.StartDate">Date</option>
-      <option [value]="SortCriteria.MeetingNumber">Meeting number</option>
+    <h3>{{ 'general.sortBy' | translate }}</h3>
+    <select [(ngModel)]="selectedSortCriteria" (change)="sortMeetings(selectedSortCriteria)">
+      <option [value]="SortCriteria.CommitteeId">{{ 'meeting.committeeName' | translate }}</option>
+      <option [value]="SortCriteria.StartDate">{{ 'meeting.date' | translate }}</option>
+      <option
+        [value]="SortCriteria.MeetingNumber">{{ 'meeting.meetingNumber' | translate }}</option>
     </select>
-
   </div>
-
 
   <br>
   <table class="meeting-table">
     <thead>
     <tr>
-      <th>Committee Name</th>
-      <th>Meeting Number</th>
-      <th>Start Date Time</th>
-      <th>End Date Time</th>
-      <th>Actions</th>
+      <th>{{ 'meeting.committeeName' | translate }}</th>
+      <th>{{ 'meeting.meetingNumber' | translate }}</th>
+      <th>{{ 'meeting.startDateTime' | translate }}</th>
+      <th>{{ 'meeting.endDateTime' | translate }}</th>
+      <th>{{ 'general.view' | translate }}</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let meeting of meetings">
+    <tr *ngFor="let meeting of getPaginatedMeetings()">
       <td>{{ getCommitteeName(meeting.committeeId) }}</td>
       <td>{{ meeting.meetingNumber }}</td>
       <td>{{ meeting.startDateTime }}</td>
       <td>{{ meeting.endDateTime }}</td>
       <td>
-        <button class="view-button" (click)="viewMeeting(meeting.id)">View</button>
+        <button class="view-button"
+                (click)="viewMeeting(meeting.id)">{{ 'general.view' | translate }}</button>
       </td>
     </tr>
     </tbody>
   </table>
+  <div *ngIf="meetings && meetings.length > itemsPerPage">
+    <button *ngFor="let pageNumber of getPageNumbers()"
+            (click)="onPageChange(pageNumber)">{{ pageNumber }}</button>
+  </div>
 
-  <h3>Create Meeting</h3>
+  <h2>{{ 'meeting.createMeetingHeading' | translate }}</h2>
   <form class="meeting-form" (submit)="createMeeting()">
-    <label for="committeeId">Committee:</label>
+    <label for="committeeId">{{ 'meeting.committeeLabel' | translate }}</label>
     <select id="committeeId" name="committeeId" [(ngModel)]="meetingRequest.committeeId" required>
-      <option *ngFor="let committee of committees" [value]="committee.id">{{ committee.shortName }}</option>
+      <option *ngFor="let committee of committees"
+              [value]="committee.id">{{ committee.shortName }}</option>
     </select>
 
-    <label for="venueId">Venue:</label>
+    <label for="venueId">{{ 'meeting.venue' | translate }}</label>
     <select id="venueId" name="venueId" [(ngModel)]="meetingRequest.venueId" required>
       <option *ngFor="let venue of venues" [value]="venue.id">{{ venue.name }}</option>
     </select>
 
-    <label for="meetingNumber">Meeting number:</label>
-    <input type="number" id="meetingNumber" name="meetingNumber" [(ngModel)]="meetingRequest.meetingNumber" required>
+    <label for="meetingNumber">{{ 'meeting.meetingNumber' | translate }}</label>
+    <input type="number" id="meetingNumber" name="meetingNumber"
+           [(ngModel)]="meetingRequest.meetingNumber" required>
 
-    <label for="startDateTime">Start Date Time:</label>
-    <input type="datetime-local" id="startDateTime" name="startDateTime" [(ngModel)]="meetingRequest.startDateTime" required>
+    <label for="startDateTime">{{ 'meeting.startDateTime' | translate }}</label>
+    <input type="datetime-local" id="startDateTime" name="startDateTime"
+           [(ngModel)]="meetingRequest.startDateTime" required>
 
-    <label for="endDateTime">End Date Time:</label>
-    <input type="datetime-local" id="endDateTime" name="endDateTime" [(ngModel)]="meetingRequest.endDateTime" required>
+    <label for="endDateTime">{{ 'meeting.endDateTime' | translate }}</label>
+    <input type="datetime-local" id="endDateTime" name="endDateTime"
+           [(ngModel)]="meetingRequest.endDateTime" required>
 
-    <button type="submit" class="create-button">Create Meeting</button>
+    <button type="submit"
+            class="create-button">{{ 'meeting.createMeetingButton' | translate }}</button>
   </form>
 </div>

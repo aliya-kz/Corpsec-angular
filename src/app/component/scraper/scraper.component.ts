@@ -19,7 +19,7 @@ export class ScraperComponent {
         this.scrapingResult = response;
       },
       (error: any) => {
-        console.error('Error occurred while scraping minutes:', error);
+        this.scrapingResult = 'Error occurred while transferring the data';
       }
     );
   }

@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {AgendaItemResponse} from '../component/meeting-list/agenda-item/agenda-item.model';
-import {LanguageService} from "./language.service"; // Import the AgendaItemResponse type
+import {AgendaItemResponse} from '../model/agenda-item.model';
+import {LanguageService} from "./language.service";
+import {AGENDA_ITEMS_URI, DEFAULT_LANGUAGE} from "../app.constants"; // Import the AgendaItemResponse type
 
 @Injectable({
   providedIn: 'root'
 })
 export class AgendaItemService {
-  private apiUrl = 'http://localhost:8080/agenda-items';
-  private language: string = 'en';
+  private apiUrl = AGENDA_ITEMS_URI;
+  private language: string = DEFAULT_LANGUAGE;
 
   constructor(private http: HttpClient, private languageService: LanguageService) {
     this.languageService.languageChanged.subscribe((language: string) => {

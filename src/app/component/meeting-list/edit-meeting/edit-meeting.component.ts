@@ -6,13 +6,13 @@ import {CommitteeResponse} from "../../../model/committee.model";
 import {ActivatedRoute} from "@angular/router";
 import {VenueService} from "../../../service/venue.service";
 import {CommitteeService} from "../../../service/committee.service";
-import {AgendaItemRequest} from "../agenda-item/agenda-item.model";
+import {AgendaItemRequest} from "../../../model/agenda-item.model";
 import {Location} from "@angular/common";
 import {VoteResponse} from "../../../model/vote.model";
 import {VoteService} from "../../../service/vote.service";
 import {MemberService} from "../../../service/member.service";
 import {MemberResponse} from "../../../model/member.model";
-import {Voting} from "../../../model/voting.model";
+import {STATUS_MESSAGES} from "../../../app.constants";
 
 @Component({
   selector: 'app-edit-meeting',
@@ -27,6 +27,7 @@ export class EditMeetingComponent {
   committees: CommitteeResponse[] = [];
   votes: VoteResponse[] = [];
   members: MemberResponse[] = [];
+  statusMessage: string = '';
 
   constructor(
     private venueService: VenueService,
@@ -47,7 +48,7 @@ export class EditMeetingComponent {
     this.loadCommittees();
     this.loadVenues();
     this.loadVotes();
-    this.newAgendaItem.number= this.meetingRequest.agendaItemList.length + 1;
+    this.newAgendaItem.number = this.meetingRequest.agendaItemList.length + 1;
   }
 
   loadMeetingDetails(id: string | null): void {
@@ -66,10 +67,10 @@ export class EditMeetingComponent {
     if (this.meetingRequest) {
       this.meetingService.updateMeeting(this.meetingId, this.meetingRequest).subscribe(
         updatedMember => {
-          console.log('Meeting updated successfully');
+         this.statusMessage = STATUS_MESSAGES.meetingUpdatedSuccess;
         },
         error => {
-          console.log('Error updating meeting: ' + error.message);
+          this.statusMessage = STATUS_MESSAGES.meetingUpdatedError + error.message;
         });
     }
   }

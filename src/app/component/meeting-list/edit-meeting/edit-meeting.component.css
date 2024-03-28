@@ -37,11 +37,11 @@
   background-color: #f2f2f2;
 }
 
-.edit-meeting-container .wide-input {
+.edit-meeting-container {
   width: 100%;
 }
 
-.edit-meeting-container .save-button {
+button {
   background-color: rgb(185, 150, 110);
   color: white;
   border: none;
@@ -51,6 +51,23 @@
   border-radius: 5px;
 }
 
-.edit-meeting-container .save-button:hover {
+
+button:hover {
   background-color: rgb(165, 130, 90);
+}
+
+#number {
+  width: 15px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+table .add-item {
+  margin-top: 40px;
+}
+
+#delete {
+  background-color: darkred;
 }

@@ -3,13 +3,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { VoteResponse } from '../model/vote.model';
 import {LanguageService} from "./language.service";
+import {DEFAULT_LANGUAGE, LANGUAGE_HEADER, VOTES_URI} from "../app.constants";
 
 @Injectable({
   providedIn: 'root'
 })
 export class VoteService {
-  private apiUrl = 'http://localhost:8080/votes';
-  private language: string = 'en';
+  private apiUrl = VOTES_URI;
+  private language: string = DEFAULT_LANGUAGE;
 
   constructor(private http: HttpClient, private languageService: LanguageService) {
     this.languageService.languageChanged.subscribe((language: string) => {
@@ -19,7 +20,7 @@ export class VoteService {
 
   private getRequestOptions(): { headers: HttpHeaders } {
     return {
-      headers: new HttpHeaders().set('Accept-Language', this.language)
+      headers: new HttpHeaders().set(LANGUAGE_HEADER, this.language)
     };
   }
 

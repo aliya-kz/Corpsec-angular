@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {MemberResponse} from "../../../model/member.model";
 import {MemberService} from "../../../service/member.service";
 import {CommitteeMemberRequest} from "../../../model/committee-member.model";
+import {STATUS_MESSAGES} from "../../../app.constants";
 
 
 @Component({
@@ -29,6 +30,8 @@ export class CommitteeComponent implements OnInit {
     chair: 'false',
     gsmElectionMinutesNumber: ''
   };
+  memberAddingStatus: string = '';
+memberUpdatingStatus: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -67,9 +70,9 @@ export class CommitteeComponent implements OnInit {
 
   addCommitteeMember(): void {
     this.committeeService.addCommitteeMember(this.committeeId, this.selectedMember).subscribe(() => {
-      console.log('Committee member added successfully');
+      this.memberAddingStatus = STATUS_MESSAGES.committeeMemberAddedSuccess;
     }, error => {
-      console.error('Error adding committee-member', error);
+      this.memberAddingStatus = STATUS_MESSAGES.committeeMemberAddedError;
     });
     ;
     this.resetForm();
@@ -81,11 +84,11 @@ export class CommitteeComponent implements OnInit {
 
   updateCommittee(): void {
     this.committeeService.updateCommittee(this.committeeId, this.committee).subscribe(() => {
-      console.log('Committee updated successfully');
+      this.memberUpdatingStatus = STATUS_MESSAGES.committeeUpdatedSuccess;
     }, error => {
-      console.error('Error updating committee:', error);
+      this.memberUpdatingStatus = STATUS_MESSAGES.committeeUpdatedError;
     });
-  this.getCommitteeDetails(this.committeeId);
+    this.getCommitteeDetails(this.committeeId);
   }
 
   private filterCommitteeMembers() {

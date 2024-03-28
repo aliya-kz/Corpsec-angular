@@ -1,85 +1,93 @@
-<div><div class="edit-meeting-container">
-  <h3>Edit Meeting</h3>
-  <label for="committeeName">Committee:</label>
-  <input type="text" id="committeeName" name="committeeName" [value]="getCommitteeName(meetingRequest.committeeId)" disabled>
+<div class="edit-meeting-container">
+  <h3>{{ 'editMeeting.title' | translate }}</h3>
+  <label for="committeeName">{{ 'editMeeting.committeeLabel' | translate }}</label>
+  <input type="text" id="committeeName" name="committeeName"
+         [value]="getCommitteeName(meetingRequest.committeeId)" disabled>
   <br>
-  <label for="venue">Venue:</label>
+  <label for="venue">{{ 'editMeeting.venueLabel' | translate }}</label>
   <input type="text" id="venue" name="venue" [value]="getVenue(meetingRequest.venueId)" disabled>
   <br>
-  <label for="meetingNumber">Meeting Number:</label>
-  <input type="text" id="meetingNumber" name="meetingNumber" [(ngModel)]="meetingRequest.meetingNumber">
+  <label for="meetingNumber">{{ 'editMeeting.meetingNumberLabel' | translate }}</label>
+  <input type="text" id="meetingNumber" name="meetingNumber"
+         [(ngModel)]="meetingRequest.meetingNumber">
   <br>
-  <label for="startDateTime">Start Date Time:</label>
-  <input type="datetime-local" id="startDateTime" name="startDateTime" [(ngModel)]="meetingRequest.startDateTime">
+  <label for="startDateTime">{{ 'editMeeting.startDateTimeLabel' | translate }}</label>
+  <input type="datetime-local" id="startDateTime" name="startDateTime"
+         [(ngModel)]="meetingRequest.startDateTime">
   <br>
-  <label for="endDateTime">End Date Time:</label>
-  <input type="datetime-local" id="endDateTime" name="endDateTime" [(ngModel)]="meetingRequest.endDateTime">
+  <label for="endDateTime">{{ 'editMeeting.endDateTimeLabel' | translate }}</label>
+  <input type="datetime-local" id="endDateTime" name="endDateTime"
+         [(ngModel)]="meetingRequest.endDateTime">
   <br>
 
-  <h3>Agenda Items</h3>
+  <h3>{{ 'editMeeting.agendaItems' | translate }}</h3>
   <table>
     <thead>
     <tr>
-      <th>Number</th>
-      <th>Name</th>
-      <th>Decision</th>
-      <th>Votes</th>
-      <th>Delete</th>
+      <th>{{ 'editMeeting.number' | translate }}</th>
+      <th>{{ 'editMeeting.name' | translate }}</th>
+      <th>{{ 'editMeeting.decision' | translate }}</th>
+      <th>{{ 'editMeeting.votes' | translate }}</th>
+      <th>{{ 'editMeeting.delete' | translate }}</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let agendaItem of meetingRequest.agendaItemList">
-      <td><input type="text" [(ngModel)]="agendaItem.number" class="wide-input"></td>
-      <td><input type="text" [(ngModel)]="agendaItem.name" class="wide-input"></td>
-      <td><input type="text" [(ngModel)]="agendaItem.decision" class="wide-input"></td>
-      <td>
-        <li *ngFor="let voting of agendaItem.votingSet">
-          <p>{{getMemberName(voting.memberId)}}</p>
-          <select id="voting" name="voting" [(ngModel)]="voting.voteId">
-            <option *ngFor="let vote of votes" [value]="vote.id">{{vote.name}}</option>
-          </select>
-        </li>
+      <td><input type="text" [(ngModel)]="agendaItem.number" id="number" disabled></td>
+      <td><textarea cols="40" rows="12" [(ngModel)]="agendaItem.name" class="wide-input"></textarea>
       </td>
-    <td>
-      <button (click)="deleteAgendaItem(agendaItem.id)">Delete Agenda Item</button>
-    </td>
+      <td><textarea cols="40" rows="12" [(ngModel)]="agendaItem.decision"
+                    class="wide-input"></textarea></td>
+      <td>
+        <ul>
+          <li *ngFor="let voting of agendaItem.votingSet">
+            {{ getMemberName(voting.memberId) }}
+            <select id="voting" name="voting" [(ngModel)]="voting.voteId">
+              <option *ngFor="let vote of votes" [value]="vote.id">{{ vote.name }}</option>
+            </select>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <button id="delete"
+                (click)="deleteAgendaItem(agendaItem.id)">{{ 'editMeeting.delete' | translate }}</button>
+      </td>
+    </tr>
     </tbody>
   </table>
+  <button type="submit" class="save-button"
+          (click)="updateMeeting()">{{ 'editMeeting.saveChanges' | translate }}</button>
 
 
-  <table>
+  <table class="add-item">
     <thead>
     <tr>
-      <th>Number</th>
-      <th>Name</th>
-      <th>Decision</th>
-      <th>Votes</th>
+      <th>{{ 'editMeeting.number' | translate }}</th>
+      <th>{{ 'editMeeting.name' | translate }}</th>
+      <th>{{ 'editMeeting.decision' | translate }}</th>
+      <th>{{ 'editMeeting.votes' | translate }}</th>
     </tr>
     </thead>
     <tbody>
-
-  <tr>
-    <td><input type="number" [(ngModel)]="newAgendaItem.number" class="wide-input"></td>
-    <td><input type="text" [(ngModel)]="newAgendaItem.name" class="wide-input"></td>
-    <td><input type="text" [(ngModel)]="newAgendaItem.decision" class="wide-input"></td>
-    <td>
-      <!-- Loop through active members for selecting votes -->
-      <ul>
-        <li *ngFor="let member of members">
-          <p>{{member.shortName}}</p>
-          <select id="newVoting" name="newVoting" (change)="addVoting(member, $event)">
-            <option value="">Select a vote</option>
-            <option *ngFor="let vote of votes" [value]="vote.id">{{vote.name}}</option>
-          </select>
-        </li>
-
-      </ul>
-    </td>
-  </tr>
+    <tr>
+      <td><input id="number" [(ngModel)]="newAgendaItem.number"></td>
+      <td><textarea cols="40" rows="12" [(ngModel)]="newAgendaItem.name"></textarea></td>
+      <td><textarea cols="40" rows="12" [(ngModel)]="newAgendaItem.decision"></textarea></td>
+      <td>
+        <ul>
+          <li *ngFor="let member of members">
+            {{ member.shortName }}
+            <select id="newVoting" name="newVoting" (change)="addVoting(member, $event)">
+              <option *ngFor="let vote of votes" [value]="vote.id">{{ vote.name }}</option>
+            </select>
+          </li>
+        </ul>
+      </td>
+    </tr>
     </tbody>
   </table>
 
-  <button type="button" class="add-button" (click)="addAgendaItem()">Add Agenda Item</button>
-  <button type="submit" class="save-button" (click)="updateMeeting()">Save Changes</button>
-</div>
+  <button type="button" class="add-button"
+          (click)="addAgendaItem()">{{ 'editMeeting.addAgendaItem' | translate }}</button>
+  <p class="status-message">{{ statusMessage }}</p>
 </div>

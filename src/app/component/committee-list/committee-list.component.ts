@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {CommitteeService} from '../../service/committee.service';
 import {MemberService} from '../../service/member.service';
 import {MemberResponse} from "../../model/member.model";
 import {CommitteeRequest, CommitteeResponse} from "../../model/committee.model";
+import {STATUS_MESSAGES} from "../../app.constants";
 
 @Component({
   selector: 'app-committee-list',
@@ -16,8 +16,9 @@ export class CommitteeListComponent implements OnInit {
   showHistoryButton: boolean = true;
   newCommittee: CommitteeRequest = new CommitteeRequest();
   today: Date = new Date();
+  committeeCreationStatusMessage: string = '';
 
-  constructor(private committeeService: CommitteeService, private memberService: MemberService, private router: Router) {
+  constructor(private committeeService: CommitteeService, private memberService: MemberService) {
   }
 
   ngOnInit(): void {
@@ -37,10 +38,6 @@ export class CommitteeListComponent implements OnInit {
     });
   }
 
-  editCommittee(committeeId: string): void {
-    this.router.navigate(['/committees', committeeId]);
-  }
-
   showHistory(): void {
     this.showHistoryButton = false;
   }
@@ -58,16 +55,25 @@ export class CommitteeListComponent implements OnInit {
   }
 
   createCommittee() {
-    this.committeeService.createCommittee(this.newCommittee).subscribe();
+    this.committeeService.createCommittee(this.newCommittee).subscribe(
+      response => {
+        this.committeeCreationStatusMessage = STATUS_MESSAGES.committeeAddedSuccess;
+      },
+      error => {
+        this.committeeCreationStatusMessage = STATUS_MESSAGES.committeeAddedError;
+      }
+    );
+    ;
     this.getActiveCommittees();
     this.newCommittee = new CommitteeRequest();
+
   }
 
   filterCommitteeMembers(committee: CommitteeResponse) {
-      const currentDate = new Date().toISOString().split('T')[0];
-      const filteredCommitteeMembers = committee.committeeMembers.filter(member => {
-        return member.startDate <= currentDate && member.endDate >= currentDate;
-      });
-      return filteredCommitteeMembers;
+    const currentDate = new Date().toISOString().split('T')[0];
+    const filteredCommitteeMembers = committee.committeeMembers.filter(member => {
+      return member.startDate <= currentDate && member.endDate >= currentDate;
+    });
+    return filteredCommitteeMembers;
   }
 }

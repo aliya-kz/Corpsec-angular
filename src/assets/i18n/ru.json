@@ -1,11 +1,125 @@
 {
   "member": {
-    "title": "Детали участника",
+    "title": "Информация о члене Совета директоров",
     "fullName": "Полное имя",
     "shortName": "Краткое имя",
+    "startDate": "Дата избрания",
+    "endDate": "Дата прекращения полномочий",
+    "ined": "Является Независимым директором",
+    "updateButton": "Обновить"
+  },
+  "member-list": {
+    "title": "Список участников",
+    "viewHistory": "Архив членов Совета директоров",
+    "backToActiveMembers": "Вернуться к активным участникам",
     "startDate": "Дата начала",
     "endDate": "Дата окончания",
-    "ined": "INED",
-    "updateButton": "Обновить"
+    "addMemberTitle": "Добавить нового члена правления",
+    "addMember": "Добавить участника"
+  },
+  "general": {
+    "yes": "Да",
+    "no": "Нет",
+    "all": "Показать все",
+    "sortBy": "Сортировать",
+    "applyFilters": "Применить",
+    "resetFilters": "Сбросить",
+    "startDate": "Дата начала",
+    "endDate": "Дата окончания",
+    "view": "Просмотр"
+  },
+  "committee": {
+    "listHeading": "Список Комитетов",
+    "addHeading": "Создать новый комитет",
+    "fullName": "Полное наименование",
+    "shortName": "Короткое наименование",
+    "startDate": "Дата создания",
+    "endDate": "Дата управзднения",
+    "editButton": "Редактировать",
+    "createButton": "Создать комитет",
+    "historyButton": "Архив комитетов",
+    "backButton": "Вернуться к активным комитетам"
+  },
+  "venue": {
+    "listHeading": "Места проведения заседания",
+    "createHeading": "Добавить новую локацию",
+    "nameEnLabel": "Наименование на английском языке",
+    "nameRuLabel": "Наименование на руссков языке",
+    "createButton": "Добавить"
+  },
+  "agenda": {
+    "committee": "Комитет",
+    "selectCommittee": "Выберите Комитет",
+    "searchLabel": "Поиск:",
+    "meetingNumberHeader": "Номер протокола",
+    "meetingDateHeader": "Дата заседания (MM/DD/YYYY)",
+    "agendaItemNumberHeader": "Номер вопроса повестки дня",
+    "agendaItemHeader": "Вопрос повестки дня",
+    "decisionHeader": "Принятое решение",
+    "downloadExcelButton": "Скачать Excel",
+    "meetingLinkHeader": "Ссылка на заседание"
+  },
+  "meeting": {
+    "listHeading": "Искать по критериям",
+    "committeeLabel": "Комитет",
+    "committeeName": "Наименование комитета",
+    "date": "Дата",
+    "meetingNumber": "Номер заседания",
+    "startDateTime": "Дата и время начала",
+    "endDateTime": "Дата и время окончания",
+    "createMeetingHeading": "Добавить новое заседание",
+    "createMeetingButton": "Добавить",
+    "venue": "Место проведения заседания"
+  },
+  "navbar": {
+    "members": "Члены СД",
+    "committees": "СД и комитеты",
+    "meetings": "Заседания",
+    "venues": "Места проведения",
+    "search": "Поиск"
+  },
+  "scraping": {
+    "folderPath": "Путь к папке для сохранения информации из протокола в базу данных:",
+    "scrapeButton": "Сохранить",
+    "scrapingResult": "Результат:"
+  },
+  "meetingDetails": {
+    "title": "Детали заседания",
+    "committeeName": "Наименование комитета:",
+    "meetingNumber": "Номер заседания:",
+    "venue": "Место проведения:",
+    "startDateTime": "Дата и время начала:",
+    "endDateTime": "Дата и время окончания:",
+    "agendaItems": "Повестка дня",
+    "number": "Номер вопроса",
+    "name": "Наименование вопроса",
+    "decision": "Решение",
+    "committeeMembersVotings": "Голосование",
+    "editButton": "Редактировать"
+  },
+  "editMeeting": {
+    "title": "Редактировать заседание",
+    "committeeLabel": "Комитет:",
+    "venueLabel": "Место проведения:",
+    "meetingNumberLabel": "Номер заседания:",
+    "startDateTimeLabel": "Дата и время начала:",
+    "endDateTimeLabel": "Дата и время окончания:",
+    "agendaItems": "Повестка дня",
+    "number": "Номер вопроса",
+    "name": "Наименование вопроса",
+    "decision": "Решение",
+    "votes": "Голосование",
+    "delete": "Удалить",
+    "addAgendaItem": "Добавить вопрос",
+    "saveChanges": "Сохранить изменения"
+  },
+  "scraping": {
+    "folderPathLabel": "Путь к папке для переноса данных из протокола:",
+    "scrapeMinutesButton": "Выполнить",
+    "scrapingResultHeading": "Результат:"
   }
 }
+
+
+
+

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {MemberService} from '../../service/member.service';
-import {MemberResponse} from '../../model/member.model';
+import {MemberRequest, MemberResponse} from '../../model/member.model';
 import {Router} from "@angular/router";
 import {SortCriteria} from "../../model/member-list.model";
+import {STATUS_MESSAGES} from "../../app.constants";
 
 
 @Component({
@@ -20,19 +21,10 @@ export class MemberListComponent implements OnInit {
   memberCreationStatusMessage: string = "";
   selectedSortCriteria: SortCriteria = SortCriteria.FullName;
   SortCriteria = SortCriteria;
-  dynamicEndpoint: string = '';
-
-  newMember: { endDate: string; ined: string; fullName: string; shortName: string; startDate: string } = {
-    fullName: '',
-    shortName: '',
-    startDate: '',
-    endDate: '',
-    ined: ''
-  };
+  newMember: MemberRequest = new MemberRequest();
   showingHistory = false;
 
   constructor(private router: Router, private memberService: MemberService) {
-    this.dynamicEndpoint = 'http://localhost:8080/members';
   }
 
   ngOnInit(): void {
@@ -49,7 +41,7 @@ export class MemberListComponent implements OnInit {
         this.members = members;
       },
       error => {
-        console.error('Error loading members:', error);
+        console.error(STATUS_MESSAGES.loadMembersError, error);
       }
     );
   }
@@ -67,17 +59,11 @@ export class MemberListComponent implements OnInit {
   createMember(): void {
     this.memberService.createMember(this.newMember).subscribe(
       response => {
-        console.log('New member added:', response);
-        this.newMember = {
-          fullName: '',
-          shortName: '',
-          startDate: '',
-          endDate: '',
-          ined: ''
-        };
+        this.memberCreationStatusMessage = STATUS_MESSAGES.memberAddedSuccess;
+        this.newMember = new MemberRequest();
       },
       error => {
-        console.error('Error adding new member:', error);
+        this.memberCreationStatusMessage = STATUS_MESSAGES.memberAddedError;
       }
     );
     this.reloadPage();

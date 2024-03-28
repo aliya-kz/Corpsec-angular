@@ -1,4 +1,4 @@
-import {AgendaItemRequest, AgendaItemResponse} from '../component/meeting-list/agenda-item/agenda-item.model';
+import {AgendaItemRequest, AgendaItemResponse} from './agenda-item.model';
 
 export  class MeetingRequest {
   id: string = "";

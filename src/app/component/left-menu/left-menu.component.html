@@ -1,0 +1,31 @@
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<div class="left-header">
+  <header>
+    <nav class="menu">
+      <ul>
+        <li><a routerLink="/members"
+               routerLinkActive="active">{{ 'navbar.members' | translate }}</a></li>
+        <li><a routerLink="/committees"
+               routerLinkActive="active">{{ 'navbar.committees' | translate }}</a></li>
+        <li><a routerLink="/meetings"
+               routerLinkActive="active">{{ 'navbar.meetings' | translate }}</a></li>
+        <li><a routerLink="/venues" routerLinkActive="active">{{ 'navbar.venues' | translate }}</a>
+        </li>
+        <li><a routerLink="/agenda-items"
+               routerLinkActive="active">{{ 'navbar.search' | translate }}</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<div class="settings">
+  <button (click)="toggleSettingsDropdown()">
+    <i class="fas fa-cog"></i>
+  </button>
+  <div *ngIf="isSettingsDropdownOpen">
+    <app-settings></app-settings>
+  </div>
+</div>
+

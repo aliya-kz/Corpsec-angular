@@ -25,6 +25,10 @@ export class MeetingListComponent implements OnInit {
   filtersApplied: boolean = false;
   selectedSortCriteria: MeetingSortCriteria = MeetingSortCriteria.CommitteeId;
   SortCriteria = MeetingSortCriteria;
+  itemsPerPage: number = 20;
+  currentPage: number = 1;
+  searchTerm: string = '';
+
 
   constructor(
     private router: Router,
@@ -96,7 +100,6 @@ export class MeetingListComponent implements OnInit {
     this.filtersApplied = true;
   }
 
-
   sortMeetings(criteria: MeetingSortCriteria): void {
     this.meetings.sort((a, b) => {
       if (a[criteria] < b[criteria]) return -1;
@@ -111,5 +114,20 @@ export class MeetingListComponent implements OnInit {
     this.endDateFilter = '';
     this.selectedCommitteeId = '';
     this.filtersApplied = false;
+  }
+
+  getPaginatedMeetings(): MeetingResponse[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.meetings.slice(startIndex, endIndex);
+  }
+
+  onPageChange(pageNumber: number): void {
+    this.currentPage = pageNumber;
+  }
+
+  getPageNumbers(): number[] {
+    const totalPages = Math.ceil(this.meetings.length / this.itemsPerPage);
+    return Array.from({length: totalPages}, (_, i) => i + 1);
   }
 }

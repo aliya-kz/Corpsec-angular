@@ -1,0 +1,62 @@
+.menu {
+  margin-top: 20px;
+  padding: 0;
+}
+
+.menu ul {
+  margin-top: 50px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li {
+  margin-bottom: 20px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.menu ul li a.active {
+  color: rgb(185, 150, 110);
+}
+
+.settings a {
+  text-decoration: none;
+  color: #333;
+}
+
+.settings a:hover {
+  color: #555;
+}
+
+.settings .settings-dropdown {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.settings i {
+  color: white;
+}
+
+.settings button {
+  background-color: transparent;
+  border: none;
+}
+
+.settings {
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+}

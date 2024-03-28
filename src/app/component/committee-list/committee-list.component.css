@@ -2,7 +2,6 @@
   padding: 20px;
 }
 
-.history-button,
 .back-button,
 .edit-button,
 .submit-button {
@@ -14,6 +13,16 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
+.history-button {
+  background-color: rgb(185, 150, 110);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
 
 .history-button:hover,
 .back-button:hover,
@@ -32,6 +41,18 @@
   padding-left: 0;
 }
 
+.committee-list a {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(40, 45, 62);
+}
+
+.committee-list a:hover {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(60, 67, 85);
+}
+
 .committee-item {
   margin-bottom: 20px;
 }
@@ -41,6 +62,20 @@
 }
 
 .chair {
-  color: #0066cc;
+  color:rgb(40, 45, 62);
   font-weight: bold;
 }
+
+label, input, .submit-button {
+  margin-bottom: 20px;
+}
+
+form {
+  width: 70%;
+}
+form input {
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+}
+

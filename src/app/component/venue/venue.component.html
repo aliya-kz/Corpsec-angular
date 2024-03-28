@@ -1,14 +1,14 @@
 <div class="venue-container">
-  <h3>Venue List</h3>
+  <h3>{{ 'venue.listHeading' | translate }}</h3>
   <ul>
     <li *ngFor="let venue of venues">{{ venue.name }}</li>
   </ul>
-  <h3>Create New Venue</h3>
+  <h3>{{ 'venue.createHeading' | translate }}</h3>
   <form (ngSubmit)="createVenue()">
-    <label for="nameEn">Name (English):</label>
+    <label for="nameEn">{{ 'venue.nameEnLabel' | translate }}:</label>
     <input type="text" id="nameEn" name="nameEn" [(ngModel)]="newVenue.nameEn" required>
-    <label for="nameRu">Name (Russian):</label>
+    <label for="nameRu">{{ 'venue.nameRuLabel' | translate }}:</label>
     <input type="text" id="nameRu" name="nameRu" [(ngModel)]="newVenue.nameRu" required>
-    <button type="submit">Create Venue</button>
+    <button type="submit">{{ 'venue.createButton' | translate }}</button>
   </form>
 </div>

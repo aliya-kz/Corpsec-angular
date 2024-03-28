@@ -8,8 +8,9 @@ import {VenueComponent} from "./component/venue/venue.component";
 import {MeetingListComponent} from "./component/meeting-list/meeting-list.component";
 import {EditMeetingComponent} from "./component/meeting-list/edit-meeting/edit-meeting.component";
 import {VoteComponent} from "./component/vote/vote.component";
-import {AgendaItemComponent} from "./component/meeting-list/agenda-item/agenda-item.component";
+import {AgendaItemComponent} from "./component/agenda-item/agenda-item.component";
 import {MeetingComponent} from "./component/meeting-list/meeting/meeting.component";
+import {SettingsComponent} from "./component/settings/settings.component";
 
 export const routes: Routes = [
   {path: 'members', component: MemberListComponent},
@@ -20,9 +21,10 @@ export const routes: Routes = [
   {path: "venues", component: VenueComponent},
   {path: "meetings", component: MeetingListComponent},
   {path: 'meetings/:id', component: MeetingComponent},
-  { path: 'meetings/:id/edit', component: EditMeetingComponent },
+  {path: 'meetings/:id/edit', component: EditMeetingComponent},
   {path: 'votes', component: VoteComponent},
-  {path: 'agenda-items', component: AgendaItemComponent}
+  {path: 'agenda-items', component: AgendaItemComponent},
+  {path: 'settings', component: SettingsComponent}
 ];
 
 @NgModule({

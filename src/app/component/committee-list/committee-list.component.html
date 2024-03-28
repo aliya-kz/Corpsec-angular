@@ -1,34 +1,40 @@
 <div class="container">
-  <button *ngIf="showHistoryButton" class="history-button" (click)="goToCommitteesHistory()">History</button>
-  <button *ngIf="!showHistoryButton" class="back-button" (click)="hideHistory()">Back to Active Committees</button>
+  <button *ngIf="showHistoryButton" class="history-button"
+          (click)="goToCommitteesHistory()">{{ 'committee.historyButton' | translate }}</button>
+  <button *ngIf="!showHistoryButton" class="back-button"
+          (click)="hideHistory()">{{ 'committee.backButton' | translate }}</button>
 
-  <h2 class="heading">List of Committees</h2>
+  <h2 class="heading">{{ 'committee.listHeading' | translate }}</h2>
   <ul class="committee-list">
     <li *ngFor="let committee of committees" class="committee-item">
-      {{ committee.fullName }}
-      <button class="edit-button" (click)="editCommittee(committee.id)">Edit</button>
-      <ul class="member-list">
-        <li *ngFor="let member of filterCommitteeMembers(committee)" class="member-item">
-          {{ member.memberName }} <span *ngIf="member.chair ==='true'" class="chair">(Chair)</span>
-        </li>
-      </ul>
+      <td><a [routerLink]="['/committees', committee.id]">{{ committee.fullName }}</a>
+        <ul class="member-list">
+          <li *ngFor="let member of filterCommitteeMembers(committee)" class="member-item">
+            {{ member.memberName }} <span *ngIf="member.chair === 'true'"
+                                          class="chair">(Chair)</span>
+          </li>
+        </ul>
     </li>
   </ul>
 
-  <h2 class="heading">Add new committee</h2>
+
   <form class="form" (ngSubmit)="createCommittee()">
-    <label for="fullName">Full Name:</label>
+    <h2 class="heading">{{ 'committee.addHeading' | translate }}</h2>
+    <label for="fullName">{{ 'committee.fullName' | translate }}:</label>
     <input type="text" id="fullName" name="fullName" [(ngModel)]="newCommittee.fullName" required>
 
-    <label for="shortName">Short Name:</label>
-    <input type="text" id="shortName" name="shortName" [(ngModel)]="newCommittee.shortName" required>
+    <label for="shortName">{{ 'committee.shortName' | translate }}:</label>
+    <input type="text" id="shortName" name="shortName" [(ngModel)]="newCommittee.shortName"
+           required>
 
-    <label for="startDate">Start Date:</label>
-    <input type="date" id="startDate" name="startDate" [(ngModel)]="newCommittee.startDate" required>
+    <label for="startDate">{{ 'committee.startDate' | translate }}:</label>
+    <input type="date" id="startDate" name="startDate" [(ngModel)]="newCommittee.startDate"
+           required><br>
 
-    <label for="endDate">End Date:</label>
-    <input type="date" id="endDate" name="endDate" [(ngModel)]="newCommittee.endDate" required>
+    <label for="endDate">{{ 'committee.endDate' | translate }}:</label>
+    <input type="date" id="endDate" name="endDate" [(ngModel)]="newCommittee.endDate" required><br>
 
-    <button type="submit" class="submit-button">Create Committee</button>
+    <button type="submit" class="submit-button">{{ 'committee.createButton' | translate }}</button>
+    <p class="status-message">{{ committeeCreationStatusMessage }}</p>
   </form>
 </div>

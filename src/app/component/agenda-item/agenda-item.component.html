@@ -1,0 +1,55 @@
+<div class="container">
+  <div>
+    <label for="committeeId">{{ 'agenda.committeeLabel' | translate }}</label>
+    <select id="committeeId" [(ngModel)]="committeeId" class="form-control">
+      <option value="">{{ 'agenda.selectCommittee' | translate }}</option>
+      <option *ngFor="let committee of committees"
+              [value]="committee.id">{{ committee.shortName }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="startDate">{{ 'general.startDate' | translate }}</label>
+    <input type="date" id="startDate" [(ngModel)]="startDate" class="form-control">
+  </div>
+
+  <div>
+    <label for="endDate">{{ 'general.endDate' | translate }}</label>
+    <input type="date" id="endDate" [(ngModel)]="endDate" class="form-control">
+  </div>
+
+  <div>
+    <label for="searchTerm">{{ 'agenda.searchLabel' | translate }}</label>
+    <input type="text" id="searchTerm" [(ngModel)]="searchTerm" class="form-control">
+    <button (click)="filterAgendaItems()">{{ 'agenda.applyButton' | translate }}</button>
+  </div>
+  <table id="agendaItemsTable" *ngIf="agendaItems && agendaItems.length > 0" class="table">
+    <thead>
+    <tr>
+      <th>{{ 'agenda.meetingNumberHeader' | translate }}</th>
+      <th>{{ 'agenda.meetingDateHeader' | translate }}</th>
+      <th>{{ 'agenda.agendaItemNumberHeader' | translate }}</th>
+      <th>{{ 'agenda.agendaItemHeader' | translate }}</th>
+      <th>{{ 'agenda.decisionHeader' | translate }}</th>
+      <th>{{ 'agenda.meetingLinkHeader' | translate }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of getPaginatedItems()">
+      <td>{{ getMeetingNumber(item) }}</td>
+      <td>{{ getMeetingDate(item) }}</td>
+      <td>{{item.number }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.decision }}</td>
+      <td><a [routerLink]="['/meetings', item.meetingId]">View Meeting</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="agendaItems && agendaItems.length > itemsPerPage">
+    <button *ngFor="let pageNumber of getPageNumbers()"
+            (click)="onPageChange(pageNumber)">{{ pageNumber }}</button>
+  </div>
+
+  <button *ngIf="agendaItems && agendaItems.length > 0"
+          (click)="downloadExcel()">{{ 'agenda.downloadExcelButton' | translate }}</button>
+</div>

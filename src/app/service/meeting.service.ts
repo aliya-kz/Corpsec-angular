@@ -2,14 +2,15 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {MeetingRequest, MeetingResponse} from '../model/meeting.model';
-import {AgendaItemRequest, AgendaItemResponse} from "../component/meeting-list/agenda-item/agenda-item.model";
+import {AgendaItemRequest, AgendaItemResponse} from "../model/agenda-item.model";
 import {LanguageService} from "./language.service";
+import {LANGUAGE_HEADER, MEETINGS_URI} from "../app.constants";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MeetingService {
-  private apiUrl = 'http://localhost:8080/meetings';
+  private apiUrl = MEETINGS_URI;
   private language: string = '';
 
   constructor(private http: HttpClient, private languageService: LanguageService) {
@@ -20,7 +21,7 @@ export class MeetingService {
 
   private getRequestOptions(): { headers: HttpHeaders } {
     return {
-      headers: new HttpHeaders().set('Accept-Language', this.language)
+      headers: new HttpHeaders().set(LANGUAGE_HEADER, this.language)
     };
   }
 

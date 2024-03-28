@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AgendaItemService} from '../../../service/agenda-item.service';
-import {AgendaItemResponse} from './agenda-item.model';
-import {CommitteeService} from "../../../service/committee.service";
-import {CommitteeResponse} from "../../../model/committee.model";
-import {MeetingResponse} from "../../../model/meeting.model";
-import {MeetingService} from "../../../service/meeting.service"; // Import the AgendaItemResponse type
+import {AgendaItemService} from '../../service/agenda-item.service';
+import {AgendaItemResponse} from '../../model/agenda-item.model';
+import {CommitteeService} from "../../service/committee.service";
+import {CommitteeResponse} from "../../model/committee.model";
+import {MeetingResponse} from "../../model/meeting.model";
+import {MeetingService} from "../../service/meeting.service"; // Import the AgendaItemResponse type
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -54,7 +54,11 @@ export class AgendaItemComponent implements OnInit {
 
   getMeetingDate(agendaItemResponse: AgendaItemResponse) {
     const meeting = this.meetings.find(m => m.id === agendaItemResponse.meetingId);
-    return meeting ? meeting.startDateTime : 'Meeting date not found';
+    if (meeting && meeting.startDateTime) {
+      return new Date(meeting.startDateTime).toLocaleDateString();
+    } else {
+      return 'Meeting date not found';
+    }
   }
 
   loadMeetings(): void {
@@ -80,11 +84,6 @@ export class AgendaItemComponent implements OnInit {
     XLSX.writeFile(wb, fileName);
   }
 
-  getPageNumbers(): number[] {
-    const totalPages = Math.ceil(this.agendaItems.length / this.itemsPerPage);
-    return Array.from({ length: totalPages }, (_, i) => i + 1);
-  }
-
   filterAgendaItems(): void {
     this.agendaItemService.filterAgendaItems(this.committeeId, this.startDate, this.endDate, this.searchTerm)
     .subscribe(items => {
@@ -100,5 +99,10 @@ export class AgendaItemComponent implements OnInit {
 
   onPageChange(pageNumber: number): void {
     this.currentPage = pageNumber;
+  }
+
+  getPageNumbers(): number[] {
+    const totalPages = Math.ceil(this.agendaItems.length / this.itemsPerPage);
+    return Array.from({length: totalPages}, (_, i) => i + 1);
   }
 }

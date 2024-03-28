@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VenueService } from '../../service/venue.service';
 import { VenueResponse, VenueRequest } from '../../model/venue.model';
+import {STATUS_MESSAGES} from "../../app.constants";
 
 @Component({
   selector: 'app-venue',
@@ -11,6 +12,7 @@ import { VenueResponse, VenueRequest } from '../../model/venue.model';
 export class VenueComponent implements OnInit {
   venues: VenueResponse[] = [];
   newVenue: VenueRequest = { nameEn: '', nameRu: '' };
+  statusMessage: string = '';
 
   constructor(private venueService: VenueService) { }
 
@@ -25,9 +27,15 @@ export class VenueComponent implements OnInit {
   }
 
   createVenue(): void {
-    this.venueService.createVenue(this.newVenue).subscribe(() => {
-      this.newVenue = { nameEn: '', nameRu: '' };
-      this.loadVenues();
-    });
+    this.venueService.createVenue(this.newVenue).subscribe(
+        response => {
+          this.statusMessage = STATUS_MESSAGES.venueAddedSuccess;
+          this.newVenue = { nameEn: '', nameRu: '' };
+          this.loadVenues();
+        },
+          error => {
+            this.statusMessage = STATUS_MESSAGES.venueAddedError;
+          }
+      );
   }
 }

@@ -1,10 +1,10 @@
 <div>
-  <label for="folderPath">Folder Path:</label>
+  <label for="folderPath">{{ 'scraping.folderPathLabel' | translate }}</label>
   <input type="text" id="folderPath" name="folderPath" [(ngModel)]="folderPath">
-  <button (click)="scrapeMinutes()">Scrape Minutes</button>
+  <button (click)="scrapeMinutes()">{{ 'scraping.scrapeMinutesButton' | translate }}</button>
 </div>
 
 <div *ngIf="scrapingResult">
-  <h3>Scraping Result:</h3>
+  <h3>{{ 'scraping.scrapingResultHeading' | translate }}</h3>
   <p>{{ scrapingResult }}</p>
 </div>
